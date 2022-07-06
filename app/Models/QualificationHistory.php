@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class QualificationHistory extends Model
 {
     use HasFactory;
+
+    // protected $casts = [
+    //     'acquisition_datetime' => 'datetime',
+    // ];
 }

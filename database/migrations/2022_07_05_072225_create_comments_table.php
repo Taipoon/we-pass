@@ -16,8 +16,15 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->foreignId('user_id');
-            $table->foreignId('thread_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('thread_id')
+                ->constrained('threads')
+                ->onUpdate('cascade')
+                ->onUpdate('cascade');
+            $table->unique(['user_id', 'thread_id']);
             $table->timestamps();
         });
     }

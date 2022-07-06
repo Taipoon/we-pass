@@ -2,18 +2,25 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class QualificationHistorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        //
+        DB::table('qualification_histories')->insert([
+            [
+                'acquisition_datetime' => Carbon::now(),
+                'user_id' => 1,
+                'qualification_id' => 1,
+            ],
+            [
+                'acquisition_datetime' => Carbon::now(),
+                'user_id' => 1,
+                'qualification_id' => 2,
+            ],
+        ]);
     }
 }

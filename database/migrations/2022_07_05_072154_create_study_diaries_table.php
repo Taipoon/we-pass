@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->integer('minutes');
             $table->text('memo');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,8 +15,15 @@ return new class extends Migration
     {
         Schema::create('quiz_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('quiz_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('quiz_id')
+                ->constrained('quizzes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->unique(['user_id', 'quiz_id']);
             $table->datetime('datetime');
             $table->boolean('result');
             $table->timestamps();

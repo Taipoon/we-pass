@@ -16,8 +16,14 @@ return new class extends Migration
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
             $table->text('title');
-            $table->foreignId('user_id');
-            $table->foreignId('thread_type_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('thread_type_id')
+                ->constrained('thread_types')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

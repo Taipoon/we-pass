@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('remark');
-            $table->foreignId('quorification_type_id');
+            $table->text('remarks');
+            $table->foreignId('qualification_type_id')
+                ->constrained('qualification_types')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

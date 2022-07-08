@@ -26,6 +26,10 @@ return new class extends Migration
             $table->text('answer4')->nullable();
             $table->string('q_image')->nullable();
             $table->string('a_image')->nullable();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

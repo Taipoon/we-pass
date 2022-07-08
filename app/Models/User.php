@@ -83,4 +83,18 @@ class User extends Authenticatable
             'qualification_id',
         );
     }
+
+    /**
+     * Quiz とのリレーション
+     * 
+     * 投稿したクイズを返す
+     */
+    public function quizzes()
+    {
+        return $this->hasMany(
+            Quiz::class,
+            'user_id',
+            'id',
+        );
+    }
 }

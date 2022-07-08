@@ -21,7 +21,7 @@ return new class extends Migration
                 ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->timestamps();
+            $table->timestamps($precision = 0);
         });
     }
 
